@@ -1,0 +1,4 @@
+server: 'us-west.thethings.network'
+username: 'middleware'
+password: 'ttn-account-v2.SBnui4l6CloBV-IYQtjASijo-LdoLH7Qtxz8WyZj-7k'
+port: '1883'
