@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'json'
-require_relative '../config/databse.rb'
+require_relative '../db/databse.rb'
 
 class DataManage
     def initialize()
@@ -14,8 +14,8 @@ class DataManage
             check = @node.sensors.find_by_name(topic[5])
             if check != nil
                 value = message[topic[5]]['value']
-                unique_id = message[topic[5]]['unique_id']
-                unique_id = /([a-z0-9])\w+/.match(unique_id)
+                # unique_id = message[topic[5]]['unique_id']
+                # unique_id = /([a-z0-9])\w+/.match(unique_id)
                 Measure.create(:data => value, :unit => check.units,:node => @node,:sensor => check)
                 puts "Datos ingresados"
             else
