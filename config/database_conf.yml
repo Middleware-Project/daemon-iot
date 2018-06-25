@@ -3,7 +3,13 @@ default: &default
   encoding: unicode
   pool: 5
   host: localhost
+  username: negrocu
+  password: negrocu
 
 development:
   <<: *default
   database: test3
+
+production:
+  <<: *default
+  database: api_v2_p

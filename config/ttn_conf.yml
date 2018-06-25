@@ -1,4 +1,8 @@
 server: 'us-west.thethings.network'
 username: 'middleware'
 password: 'ttn-account-v2.SBnui4l6CloBV-IYQtjASijo-LdoLH7Qtxz8WyZj-7k'
-port: '1883'
+port: '8883'
+cert_file: '/Users/negrocu/Work/Titulo/middleware-project/daemon-iot/cert/certificate.pem'
+key_file: '/Users/negrocu/Work/Titulo/middleware-project/daemon-iot/cert/key.pem'
+ca_file: '/Users/negrocu/Work/Titulo/middleware-project/daemon-iot/cert/mqtt-ca.pem'
+ssl: true
