@@ -1,7 +1,7 @@
 require 'daemons'
 
 pwd  = File.dirname(File.expand_path(__FILE__))
-file = pwd + '/services/background_service.rb'
+file = pwd + '/service/background_service.rb'
 
 options = {
     :backtrace  => true,
@@ -9,5 +9,3 @@ options = {
     :log_output => true
 }
 Daemons.run(file,options)
-
-

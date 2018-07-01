@@ -23,7 +23,7 @@ config = YAML.load_file(File.join(File.dirname(__FILE__),'../config/ttn_conf.yml
 
 @manage = DataManage.new()
 puts "Connecting to mosquitto..."
-@client = MQTT::Client.connect(:host => @server,:port => 1883)
+@client = MQTT::Client.connect(:host => @server,:port => 8883,:ssl=>true)
 
 if @client.connected?
     puts "Mosquitto MQTT Client up"
