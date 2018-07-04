@@ -15,7 +15,7 @@ class DataManage
             check = @node.sensors.find_by_name(topic[5])
             if check != nil
                 value = message[topic[5]]['value']
-                Measure.create(:data => value, :unit => check.units,:node => @node,:sensor => check)
+                Measure.create(:data => value, :unit => check.units,:node => @node,:sensor => check,:sensor_name => topic[5])
                 puts "Datos ingresados"
             else
                 puts "Sensor de #{topic[5]} no pertenece a nodo #{@node.id}"
@@ -37,7 +37,7 @@ class DataManage
                 check = @node.sensors.find_by_name(sensor)
                 if check != nil
                     value = payload_fields['value']
-                    Measure.create(:data => value, :unit => check.units,:node => @node,:sensor => check)
+                    Measure.create(:data => value, :unit => check.units,:node => @node,:sensor => check,:sensor_name => sensor)
                     puts "Datos ingresados"
                 else
                     puts "Sensor de #{sensor} no pertenece a nodo #{@node.unique_id}"
