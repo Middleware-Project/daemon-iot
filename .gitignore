@@ -13,7 +13,7 @@
 *.output
 # Used by dotenv library to load environment variables.
 # .env
-* .pid
+*.pid
 ## Specific to RubyMotion:
 .dat*
 .repl_history
