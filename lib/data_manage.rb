@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'json'
+require "base64"
 require_relative '../db/databse.rb'
 
 class DataManage
@@ -26,15 +27,16 @@ class DataManage
 
     def measure_ttn_manage(topic,message)
         message = JSON.parse(message)
-        if message['payload_fields']['data'] == 'update'
+        payload_fields = JSON.parse(Base64.decode64(message['payload_raw']))
+        if payload_fields['value'] == 'update'
             puts "Update node"
         else
             @node = Node.find_by_unique_id(message['dev_id'])
             if @node != nil
-                sensor = message['payload_fields']['data']['sensor']
+                sensor = payload_fields['sensor']
                 check = @node.sensors.find_by_name(sensor)
                 if check != nil
-                    value = message['payload_fields']['data']['value']
+                    value = payload_fields['value']
                     Measure.create(:data => value, :unit => check.units,:node => @node,:sensor => check)
                     puts "Datos ingresados"
                 else
