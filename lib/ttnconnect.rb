@@ -21,7 +21,7 @@ class TTNConnect
             puts "TTN MQTT Client up"
             @TTN.get('middleware/devices/+/up') do |topic,message|
                 puts "#{topic}: #{message}"
-                MQTT::Client.connect(:host => @server,:port => 1883) do |c|
+                MQTT::Client.connect(:host => @server,:port => 8883,:ssl => true) do |c|
                     c.publish('backend/ttn', message)
                 end
             end
