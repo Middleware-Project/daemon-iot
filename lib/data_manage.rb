@@ -29,7 +29,7 @@ class DataManage
         message = JSON.parse(message)
         payload_fields = JSON.parse(Base64.decode64(message['payload_raw']))
         if payload_fields['value'] == 'update'
-            puts "Update node"
+            lora_update(topic,message)
         else
             @node = Node.find_by_unique_id(message['dev_id'])
             if @node != nil
@@ -61,7 +61,7 @@ class DataManage
             end
             @node.update(:app_id => @app_id,:modulation => @modulation,
                 :frequency => @frequency,:data_rate => @data_rate,
-                :gateway_id => @gateway_id)
+                :gateway_id => @gateway_id,:status => true)
             if @node.save
                 puts "Node update"
             else
